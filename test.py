@@ -18,12 +18,12 @@ def gettoken():
     headers={'Content-Type':'application/x-www-form-urlencoded'
             }
     data={'grant_type': 'client_credentials',
-          'client_id':id,
-          'client_secret':secret,
+          'client_id':__id__,
+          'client_secret':__secret__,
           'redirect_uri':'http://localhost:53682/',
           'scope':'https://graph.microsoft.com/.default'
          }
-    html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (tenant),data=data,headers=headers)
+    html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (__tenant__),data=data,headers=headers)
     jsontxt = json.loads(html.text)
     access_token = jsontxt['access_token']
     return access_token
