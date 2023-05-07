@@ -33,9 +33,9 @@ jobs:
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
         echo $TENANT > tenant.txt
-        sed -i 's/__id__/$CONFIG_ID' 2.py
-        sed -i 's/__secret__/$CONFIG_KEY' 2.py
-        sed -i 's/__tenant__/$TENANT' 2.py
+        sed -i 's/__id__/$CONFIG_ID/' 2.py
+        sed -i 's/__secret__/$CONFIG_KEY/' 2.py
+        sed -i 's/__tenant__/$TENANT/' 2.py
     - name: Test Api #Api调用
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
