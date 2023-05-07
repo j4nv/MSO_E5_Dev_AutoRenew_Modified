@@ -12,7 +12,6 @@ import json,sys,time
 
 
 
-path=sys.path[0]+r'/Secret.txt'
 num1 = 0
 
 def gettoken():
@@ -27,13 +26,8 @@ def gettoken():
     html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (tenant),data=data,headers=headers)
     jsontxt = json.loads(html.text)
     access_token = jsontxt['access_token']
-    with open(path, 'w+') as f:
-        f.write(refresh_token)
     return access_token
 def main():
-    fo = open(path, "r+")
-    refresh_token = fo.read()
-    fo.close()
     global num1
     localtime = time.asctime( time.localtime(time.time()) )
     access_token=gettoken()
