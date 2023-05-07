@@ -33,9 +33,9 @@ jobs:
         echo $CONFIG_ID > configid.txt
         echo $CONFIG_KEY > configkey.txt
         echo $TENANT > tenant.txt
-        sed -i '10 r configid.txt' 2.py
-        sed -i '12 r configkey.txt' 2.py
-        sed -i '14 r tenant.txt' 2.py
+        sed -i 's/__id__/$CONFIG_ID' 2.py
+        sed -i 's/__secret__/$CONFIG_KEY' 2.py
+        sed -i 's/__tenant__/$TENANT' 2.py
     - name: Test Api #Api调用
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
@@ -43,16 +43,13 @@ jobs:
     - name: Delete secrets config #删除机密
       run: | 
         rm -f 2.py
-        rm -f configid.txt
-        rm -f configkey.txt
-        rm -f tenant.txt    
-    - name: Commit #上传新的refresh_token到仓库
-      run: |
-        git config --global user.email chrisvcg_msdev@outlook.com
-        git config --global user.name chrisvcg_msdev
-        git add .
-        git commit -m "update new refresh token with GitAction" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+#    - name: Commit #上传新的refresh_token到仓库
+#      run: |
+#        git config --global user.email chrisvcg_msdev@outlook.com
+#        git config --global user.name chrisvcg_msdev
+#        git add .
+#        git commit -m "update new refresh token with GitAction" -a
+#    - name: Push changes
+#      uses: ad-m/github-push-action@master
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
