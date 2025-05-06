@@ -20,6 +20,7 @@ def gettoken():
          }
     html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (__tenant__),data=data,headers=headers)
     jsontxt = json.loads(html.text)
+    print(data)
     print(jsontxt)
     access_token = jsontxt['access_token']
     return access_token
