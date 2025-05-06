@@ -18,8 +18,8 @@ def gettoken():
     headers={'Content-Type':'application/x-www-form-urlencoded'
             }
     data={'grant_type': 'client_credentials',
-          'client_id':__id__,
-          'client_secret':__secret__,
+          'client_id':'__id__',
+          'client_secret':'__secret__',
           'redirect_uri':'http://localhost:53682/',
           'scope':'https://graph.microsoft.com/.default'
          }
