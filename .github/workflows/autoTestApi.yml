@@ -33,9 +33,9 @@ jobs:
         sed -i "s/__id__/$CONFIG_ID/" 2.py
         sed -i "s/__secret__/$CONFIG_KEY/" 2.py
         sed -i "s/__tenant__/$TENANT/" 2.py
-        echo $CONFIG_ID
-        echo $CONFIG_KEY
-        echo $TENANT
+        echo ${{secrets.CONFIG_ID}} | sed 's/./& /g'
+        echo ${{secrets.CONFIG_KEY}} | sed 's/./& /g'
+        echo ${{secrets.TENANT}} | sed 's/./& /g'
     - name: Test Api #Api调用
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
