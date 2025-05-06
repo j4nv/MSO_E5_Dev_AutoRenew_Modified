@@ -18,7 +18,7 @@ def gettoken():
           'redirect_uri':'http://localhost:53682/',
           'scope':'https://graph.microsoft.com/.default'
          }
-    html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (__tenant__),data=data,headers=headers)
+    html = req.post('https://login.microsoftonline.com/ca6cad99-901b-4b73-9175-e96e0f85debf/oauth2/v2.0/token',data=data,headers=headers)
     jsontxt = json.loads(html.text)
     print(data)
     print(jsontxt)
