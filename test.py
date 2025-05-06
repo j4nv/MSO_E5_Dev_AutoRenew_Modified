@@ -7,11 +7,6 @@ import json,sys,time
 #mail:  Mail.Read、Mail.ReadWrite、MailboxSettings.Read、MailboxSettings.ReadWrite
 #注册后一定要再点代表xxx授予管理员同意,否则outlook api无法调用
 
-
-
-
-
-
 num1 = 0
 
 def gettoken():
@@ -25,6 +20,7 @@ def gettoken():
          }
     html = req.post('https://login.microsoftonline.com/%s/oauth2/v2.0/token' % (__tenant__),data=data,headers=headers)
     jsontxt = json.loads(html.text)
+    print(jsontxt)
     access_token = jsontxt['access_token']
     return access_token
 def main():
